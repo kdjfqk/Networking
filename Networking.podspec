@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Networking"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A lib to manage the http config info in a plist file."
 
   s.homepage     = "https://github.com/kdjfqk/Networking"
