@@ -1,6 +1,0 @@
-use_frameworks!
-target 'Networking_Tests' do
-  pod 'Networking', :path => '../'
-  
-  
-end
