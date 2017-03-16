@@ -1,11 +1,16 @@
+
 #Networking
 
 ##简介
+
 基于Alamofire和ObjectMapper，实现通过plist统一管理应用中所有http请求的URL、请求方法、参数等配置信息
 
 ##结构
+
 ####NWHttpConfigManager
+
 plist文件配置管理器，负责加载配置信息
+
 ####NWUrlReqFactory
 UrlRequest工厂，负责根据`请求名`称创建相应的UrlRequest
 ####NWRequest
