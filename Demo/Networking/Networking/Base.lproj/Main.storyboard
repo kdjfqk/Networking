@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VJz-h6-BHn">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="gzo-nP-tX4">
+            <objects>
+                <viewController id="VJz-h6-BHn" customClass="ViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pxp-Es-jvO"/>
+                        <viewControllerLayoutGuide type="bottom" id="yce-e0-HIP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RXV-4x-pMe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lg-Kw-hy0">
+                                <state key="normal" title="获取用户列表"/>
+                                <connections>
+                                    <action selector="loadUsers:" destination="VJz-h6-BHn" eventType="touchUpInside" id="Evj-WZ-nEq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17s-VD-Nxq">
+                                <state key="normal" title="下载图片"/>
+                                <connections>
+                                    <action selector="download:" destination="VJz-h6-BHn" eventType="touchUpInside" id="lOc-0P-UzI"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cfK-j7-Ixi">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="Rw3-qp-VpZ"/>
+                                    <constraint firstAttribute="height" constant="217" id="ypT-Fx-kYj"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTh-cc-6qu">
+                                <state key="normal" title="暂停下载"/>
+                                <connections>
+                                    <action selector="pauseDownload:" destination="VJz-h6-BHn" eventType="touchUpInside" id="1ic-gE-hCy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYO-Hc-Qbe">
+                                <state key="normal" title="上传图片"/>
+                                <connections>
+                                    <action selector="upload:" destination="VJz-h6-BHn" eventType="touchUpInside" id="HCe-tA-67j"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0E-Aw-pkD">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="hk4-qp-5Zw"/>
+                                    <constraint firstAttribute="width" constant="275" id="jEG-Zc-HjU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="17s-VD-Nxq" firstAttribute="top" secondItem="0lg-Kw-hy0" secondAttribute="bottom" constant="26" id="BCz-Fm-H33"/>
+                            <constraint firstItem="17s-VD-Nxq" firstAttribute="centerX" secondItem="RXV-4x-pMe" secondAttribute="centerX" id="VFX-rd-6Jv"/>
+                            <constraint firstItem="cfK-j7-Ixi" firstAttribute="top" secondItem="17s-VD-Nxq" secondAttribute="bottom" constant="39" id="aeF-87-OBF"/>
+                            <constraint firstItem="l0E-Aw-pkD" firstAttribute="top" secondItem="NYO-Hc-Qbe" secondAttribute="bottom" constant="22" id="bpN-9X-GyC"/>
+                            <constraint firstItem="cfK-j7-Ixi" firstAttribute="top" secondItem="OTh-cc-6qu" secondAttribute="bottom" constant="39" id="dSB-C4-LJ6"/>
+                            <constraint firstItem="NYO-Hc-Qbe" firstAttribute="top" secondItem="cfK-j7-Ixi" secondAttribute="bottom" constant="50" id="elj-Cx-yb0"/>
+                            <constraint firstItem="0lg-Kw-hy0" firstAttribute="centerX" secondItem="RXV-4x-pMe" secondAttribute="centerX" id="i8s-8P-Xyh"/>
+                            <constraint firstItem="l0E-Aw-pkD" firstAttribute="centerX" secondItem="RXV-4x-pMe" secondAttribute="centerX" id="igU-t7-xV5"/>
+                            <constraint firstItem="NYO-Hc-Qbe" firstAttribute="centerX" secondItem="RXV-4x-pMe" secondAttribute="centerX" id="pdu-b2-yS4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OTh-cc-6qu" secondAttribute="trailing" constant="34" id="qKi-Av-fBu"/>
+                            <constraint firstItem="cfK-j7-Ixi" firstAttribute="centerX" secondItem="RXV-4x-pMe" secondAttribute="centerX" id="qpC-cU-eFf"/>
+                            <constraint firstItem="0lg-Kw-hy0" firstAttribute="top" secondItem="Pxp-Es-jvO" secondAttribute="bottom" constant="8" id="xP5-Mv-c72"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgView" destination="cfK-j7-Ixi" id="7op-a0-n8i"/>
+                        <outlet property="uploadResultLabel" destination="l0E-Aw-pkD" id="eDf-zJ-eOM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6T-Uu-RXt" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="121.88905547226388"/>
+        </scene>
+    </scenes>
+</document>

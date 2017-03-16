@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>baseUrl</key>
+	<string>https://api.douban.com/v2/book/</string>
+	<key>reqs</key>
+	<dict>
+		<key>book_search</key>
+		<dict>
+			<key>method</key>
+			<string>GET</string>
+			<key>params</key>
+			<array>
+				<string>q</string>
+				<string>tag</string>
+				<string>start</string>
+				<string>count</string>
+			</array>
+			<key>path</key>
+			<string>search</string>
+			<key>use_baseurl</key>
+			<true/>
+		</dict>
+		<key>imagga_upload</key>
+		<dict>
+			<key>method</key>
+			<string>POST</string>
+			<key>params</key>
+			<array/>
+			<key>path</key>
+			<string>https://api.imagga.com/v1/content</string>
+			<key>use_baseurl</key>
+			<false/>
+		</dict>
+        <key>reqName</key>
+        <dict>
+            <key>method</key>
+            <string>GET</string>
+            <key>path</key>
+            <string>search</string>
+            <key>use_baseurl</key>
+            <true/>
+            <key>params</key>
+            <array>
+                <string>q</string>
+                <string>tag</string>
+                <string>start</string>
+                <string>count</string>
+            </array>
+        </dict>
+	</dict>
+</dict>
+</plist>

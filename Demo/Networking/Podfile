@@ -1,0 +1,11 @@
+
+
+use_frameworks!
+
+def pods
+pod 'AlamofireObjectMapper', '~> 4.0'
+end
+
+target 'Networking' do
+    pods
+end
