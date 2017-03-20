@@ -2,16 +2,15 @@
 Networking
 ============
 
-#Networking
-##简介
+## 简介
 基于Alamofire和ObjectMapper，实现通过plist统一管理应用中所有http请求的URL、请求方法、参数等配置信息
 
-##结构
-####NWHttpConfigManager
+## 结构
+#### NWHttpConfigManager
 plist文件配置管理器，负责加载配置信息
-####NWUrlReqFactory
+#### NWUrlReqFactory
 UrlRequest工厂，负责根据`请求名`称创建相应的UrlRequest
-####NWRequest
+#### NWRequest
 发送http请求的类，提供了`直接获取Resp对象` 和 `获取Data数据` 两个方法
 
 ```
@@ -20,7 +19,7 @@ func doRequest<Resp:Mappable>(_ request:URLRequest, success: @escaping (_ respon
 //获取Data数据
 func doRequest(_ request:URLRequest, success: @escaping (_ response:Data)-> Void, failure:@escaping (_ err:Error)->Void)
 ```
-####NWDownloadRequest
+#### NWDownloadRequest
 下载请求类，支持`暂停`和`继续`
 
 ```
@@ -39,7 +38,7 @@ func stop()
 func resume()
 ```
 
-####NWUploadRequest
+#### NWUploadRequest
 上传请求类，跟**NWRequest**类似，提供了`直接获取Resp对象` 和 `获取Data数据` 两个方法
 
 ```
@@ -68,8 +67,8 @@ func doUploadData(_ request:URLRequest,
               failure:@escaping (_ err:Error)->Void){
 ```
 
-##使用说明
-###创建plist配置文件
+## 使用说明
+### 创建plist配置文件
 plist文件格式需符合如下结构：
 
 ![plist文件结构](Resource/1.png)
@@ -79,28 +78,28 @@ plist文件格式需符合如下结构：
  -   **key** `reqName`：请求名称
  -   **value **  `字典`：`method`请求方法、`path`子路径、`use_baseurl`是否使用baseUrl、`params`参数名数组
 
-###设置plist配置文件路径
+### 设置plist配置文件路径
 通过**NWHttpConfigManager**类设置配置文件
 
 ```
 NWHttpConfigManager.configFilePath = Bundle.main.path(forResource: "`plist文件名`", ofType: "plist")!
 ```
   
-###定义 Resp
+### 定义 Resp
 如果希望直接获取http请求返回的数据的对象实例，则要根据接口返回的数据结构为每个接口定义相应的响应类，定义方式参见[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 
-###定义Req
+### 定义Req
 在同一个应用中，对同一个请求的处理方式一般是相似或完全一致的，所以建议为每个接口定义相应的请求类
 
-#使用示例
-###NWRequest示例
+# 使用示例
+### NWRequest示例
 下面以**豆瓣-图书搜索**API为例，展示NWRequest如何使用
-####创建plist文件
+#### 创建plist文件
 创建HttpConfi.plist文件，内容如下所示：
 
 ![Alt text](Resource/2.png)
 
-####设置plist配置文件路径
+#### 设置plist配置文件路径
 在AppDelegatae中设置Networking使用哪个配置文件
 
 ```
@@ -110,7 +109,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     }
 ```
 
-####定义Resp
+#### 定义Resp
 定义**BookSearchResp**，此处只定义了部分字段，说明问题即可：
 
 ```
@@ -141,7 +140,7 @@ class Book: Mappable {
 }
 ```
 
-####定义Req
+#### 定义Req
 定义**BookSearchReq**
 
 ```
@@ -166,7 +165,7 @@ class BookSearchReq: NSObject {
 }
 ```
 
-####调用
+#### 调用
 
 ```
 do{
@@ -181,7 +180,7 @@ do{
 }
 ```
 
-###NWDownloadRequest示例
+### NWDownloadRequest示例
 
 ```
 //下载
@@ -205,13 +204,13 @@ self.req?.stop()
 //继续
 self.req?.resume()
 ```
-###NWUploadRequest示例
+### NWUploadRequest示例
 该示例使用`imagga`上传图片API，该API需要设置http header **Authorization**字段，所以需要先在`imagga`官网注册账号并获取**Authorization**
-####plist配置
+#### plist配置
 
 ![Alt text](Resource/3.png)
 
-####定义ImaggaUploadResp
+#### 定义ImaggaUploadResp
 
 ```
 class ImaggaUploadResp: Mappable {
@@ -236,7 +235,7 @@ class ImaggaUploadItem:Mappable{
 }
 ```
 
-####调用
+#### 调用
 
 ```
 //上传
