@@ -12,7 +12,6 @@ protocol NWError:Error{
     func toString()->String
 }
 
-
 enum NWLocalError:Int, NWError{
     
     case reqNameUnDefine = 1
@@ -26,6 +25,8 @@ enum NWLocalError:Int, NWError{
             return "HTTP请求名称未定义"
         case .reqParamsCountError:
             return "HTTP请求参数数量错误"
+        case .httpReqFailed:
+            return "HTTP请求失败"
         case .resumeDataNotFind:
             return "没有找到ResumeData，请使用doDownload下载"
         default:

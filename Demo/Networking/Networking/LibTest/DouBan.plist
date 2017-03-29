@@ -33,22 +33,6 @@
 			<key>use_baseurl</key>
 			<false/>
 		</dict>
-        <key>reqName</key>
-        <dict>
-            <key>method</key>
-            <string>GET</string>
-            <key>path</key>
-            <string>search</string>
-            <key>use_baseurl</key>
-            <true/>
-            <key>params</key>
-            <array>
-                <string>q</string>
-                <string>tag</string>
-                <string>start</string>
-                <string>count</string>
-            </array>
-        </dict>
 	</dict>
 </dict>
 </plist>

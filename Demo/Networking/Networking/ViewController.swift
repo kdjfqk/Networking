@@ -8,6 +8,8 @@
 
 import UIKit
 
+let ImaggaAuthorization = "替换为从imagga官网获取的Authorization"
+
 class ViewController: UIViewController {
 
     var books:[Book] = [Book]()
@@ -78,8 +80,7 @@ class ViewController: UIViewController {
     @IBAction func upload(_ sender: UIButton) {
         if let imgData = UIImagePNGRepresentation(self.imgView.image!) {
             do{
-                let req = try NWUrlReqFactory.createUploadReq(reqName: "imagga_upload", header: ["Authorization":"Basic YWNjX2NhMzk1NDlkNmEwMzY1Yjo0MWRjYjU0YjY0ZWYyMTM4ZTMzMmNhZjhhMzcwYmI5Mg==",
-                                                                                              "Content-Type":"multipart/form-data"])
+                let req = try NWUrlReqFactory.createUploadReq(reqName: "imagga_upload", header: ["Authorization":ImaggaAuthorization,"Content-Type":"multipart/form-data"])
                 NWUploadRequest().doUploadResp(req, multDataBlock: { () -> ([(data: Data, name: String)]) in
                     return [(imgData,"img1")]
                     }, progress: { (recived:Int64, total:Int64) in

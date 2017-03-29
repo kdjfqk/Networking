@@ -67,7 +67,9 @@ func doUploadData(_ request:URLRequest,
 ##使用说明
 ###创建plist配置文件
 plist文件格式需符合如下结构：
+
 ![plist文件结构](Resource/1.png)
+
 - **baseUrl**：所有Http请求共同的Url前缀
 - **reqs**：Http请求字典，其中key为请求名称，value为该请求的配置信息字典
  -   **key** `reqName`：请求名称
@@ -75,19 +77,23 @@ plist文件格式需符合如下结构：
 
 ###设置plist配置文件路径
 通过**NWHttpConfigManager**类设置配置文件
->NWHttpConfigManager.configFilePath = Bundle.main.path(forResource: "`plist文件名`", ofType: "plist")!
+
+```
+NWHttpConfigManager.configFilePath = Bundle.main.path(forResource: "`plist文件名`", ofType: "plist")!
+```
   
 ###定义 Resp
 如果希望直接获取http请求返回的数据的对象实例，则要根据接口返回的数据结构为每个接口定义相应的响应类，定义方式参见[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 
 ###定义Req
-在同一个应用中，对同一个请求的处理方式一般是相似或完全一致的，所以建议为每个接口定义相应的请求类
+可以直接使用`NWReqFactory`和`NWRequest`创建并发送请求，而不为每个接口单独定义一个Req类。但是在同一个应用中，对同一个请求的创建和处理返回数据的方式一般是相似或完全一致的，所以建议为每个接口定义相应的请求类
 
 #使用示例
 ###NWRequest示例
 下面以**豆瓣-图书搜索**API为例，展示NWRequest如何使用
 ####创建plist文件
 创建HttpConfi.plist文件，内容如下所示：
+
 ![Alt text](Resource/2.png)
 
 ####设置plist配置文件路径
@@ -101,8 +107,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 ####定义Resp
-定义**BookSearchResp**，此处只定义了部分字段，说明问题即可：
-```objectivec
+定义**BookSearchResp**，此处只定义了部分字段，只为说明用法：
+
+```
 class BookSearchResp : Mappable{
     var count:Int?
     var start:Int?
@@ -197,6 +204,7 @@ self.req?.resume()
 ###NWUploadRequest示例
 该示例使用`imagga`上传图片API，该API需要设置http header **Authorization**字段，所以需要先在`imagga`官网注册账号并获取**Authorization**
 ####plist配置
+
 ![Alt text](Resource/3.png)
 
 ####定义ImaggaUploadResp
