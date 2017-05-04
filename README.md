@@ -112,7 +112,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     }
 ```
 
-####定义Resp
+#### 定义Resp
 定义**BookSearchResp**，此处只定义了部分字段，只为说明用法：
 
 ```
@@ -209,11 +209,7 @@ self.req?.resume()
 ```
 ### NWUploadRequest示例
 该示例使用`imagga`上传图片API，该API需要设置http header **Authorization**字段，所以需要先在`imagga`官网注册账号并获取**Authorization**
-<<<<<<< HEAD
-####plist配置
-=======
 #### plist配置
->>>>>>> 9c5ee07b645f2163e080f3f7c52c25711a1997d4
 
 ![Alt text](Resource/3.png)
 
