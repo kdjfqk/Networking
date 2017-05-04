@@ -6,6 +6,33 @@
 	<string>https://api.douban.com/v2/book/</string>
 	<key>reqs</key>
 	<dict>
+		<key>change_pwd</key>
+		<dict>
+			<key>method</key>
+			<string>POST</string>
+			<key>params</key>
+			<array>
+				<string>oldPwd</string>
+				<string>newPwd</string>
+			</array>
+			<key>path</key>
+			<string>http://localhost:10108/rest/user/change_pwd</string>
+			<key>use_baseurl</key>
+			<false/>
+		</dict>
+		<key>server_user_search</key>
+		<dict>
+			<key>method</key>
+			<string>GET</string>
+			<key>params</key>
+			<array>
+				<string>user_id</string>
+			</array>
+			<key>path</key>
+			<string>http://localhost:10108/rest/user/query_user_by_id</string>
+			<key>use_baseurl</key>
+			<false/>
+		</dict>
 		<key>book_search</key>
 		<dict>
 			<key>method</key>
@@ -22,14 +49,14 @@
 			<key>use_baseurl</key>
 			<true/>
 		</dict>
-		<key>imagga_upload</key>
+		<key>upload</key>
 		<dict>
 			<key>method</key>
 			<string>POST</string>
 			<key>params</key>
 			<array/>
 			<key>path</key>
-			<string>https://api.imagga.com/v1/content</string>
+			<string>http://localhost:10108/rest/user/upload</string>
 			<key>use_baseurl</key>
 			<false/>
 		</dict>

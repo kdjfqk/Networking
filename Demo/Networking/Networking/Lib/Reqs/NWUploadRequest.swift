@@ -23,7 +23,7 @@ class NWUploadRequest{
     /// - parameter success:     上传成功回调
     /// - parameter failure:     上传失败回调
     func doUploadResp<Resp:Mappable>(_ request:URLRequest,
-                  multDataBlock:@escaping ()->([(data: Data, name: String)]),
+                  multDataBlock:@escaping ()->([(data: Data, name: String, fileName: String?, mimeType: String?)]),
                   progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
                   success: @escaping (_ response:Resp)-> Void,
                   failure:@escaping (_ err:Error)->Void){
@@ -48,7 +48,7 @@ class NWUploadRequest{
     /// - parameter success:     上传成功回调
     /// - parameter failure:     上传失败回调
     func doUploadData(_ request:URLRequest,
-                  multDataBlock:@escaping ()->([(data: Data, name: String)]),
+                  multDataBlock:@escaping ()->([(data: Data, name: String, fileName: String?, mimeType: String?)]),
                   progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
                   success: @escaping (_ response:Data)-> Void,
                   failure:@escaping (_ err:Error)->Void){
@@ -70,20 +70,28 @@ class NWUploadRequest{
     }
     
     private func doUpload(_ request:URLRequest,
-                          multDataBlock:@escaping ()->([(data: Data, name: String)]),
+                          multDataBlock:@escaping ()->([(data: Data, name: String, fileName: String?, mimeType: String?)]),
                           progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
                           responseBlock:@escaping ()->Void,
                           failure:@escaping (_ err:Error)->Void){
         Alamofire.upload(multipartFormData: { (multiData:MultipartFormData) in
             //构建multipartFormData
             let paramArray = multDataBlock()
-            paramArray.enumerated().forEach({ (offset: Int, element: (data: Data, name: String)) in
-                multiData.append(element.data, withName: element.name)
+            paramArray.enumerated().forEach({ (offset: Int, element: (data: Data, name: String, fileName: String?, mimeType: String?)) in
+                if element.fileName == nil || element.mimeType == nil {
+                    multiData.append(element.data, withName: element.name)
+                }else{
+                    multiData.append(element.data, withName: element.name, fileName: element.fileName!, mimeType: element.mimeType!)
+                }
             })
         }, with: request) { (result:SessionManager.MultipartFormDataEncodingResult) in
             switch result {
             case .success(let uploadReq, _, _):  //发送上传请求成功
                 self.request = uploadReq
+                
+                print(request.httpBody)
+                print(request.allHTTPHeaderFields)
+                
                 //设置上传进度回调
                 uploadReq.uploadProgress(closure: { (prgs:Progress) in
                     progress(prgs.completedUnitCount,prgs.totalUnitCount)

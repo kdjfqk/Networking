@@ -43,28 +43,30 @@ func resume()
 
 ```
 /// 上传数据，接收Resp对象
-/// - parameter request:     上传请求
-/// - parameter multDataDic: 构造上传数据的回调
-/// - parameter progress:    上传进度回调
-/// - parameter success:     上传成功回调
-/// - parameter failure:     上传失败回调
-func doUploadResp<Resp:Mappable>(_ request:URLRequest,
-              multDataBlock:@escaping ()->([(data: Data, name: String)]),
-              progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
-              success: @escaping (_ response:Resp)-> Void,
-              failure:@escaping (_ err:Error)->Void)
+    ///
+    /// - parameter request:     上传请求
+    /// - parameter multDataDic: 构造上传数据的回调
+    /// - parameter progress:    上传进度回调
+    /// - parameter success:     上传成功回调
+    /// - parameter failure:     上传失败回调
+    func doUploadResp<Resp:Mappable>(_ request:URLRequest,
+                  multDataBlock:@escaping ()->([(data: Data, name: String, fileName: String?, mimeType: String?)]),
+                  progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
+                  success: @escaping (_ response:Resp)-> Void,
+                  failure:@escaping (_ err:Error)->Void)
  
- /// 上传数据，接收Data对象
-/// - parameter request:     上传请求
-/// - parameter multDataDic: 构造上传数据的回调
-/// - parameter progress:    上传进度回调
-/// - parameter success:     上传成功回调
-/// - parameter failure:     上传失败回调
-func doUploadData(_ request:URLRequest,
-              multDataBlock:@escaping ()->([(data: Data, name: String)]),
-              progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
-              success: @escaping (_ response:Data)-> Void,
-              failure:@escaping (_ err:Error)->Void){
+    /// 上传数据，接收Data对象
+    ///
+    /// - parameter request:     上传请求
+    /// - parameter multDataDic: 构造上传数据的回调
+    /// - parameter progress:    上传进度回调
+    /// - parameter success:     上传成功回调
+    /// - parameter failure:     上传失败回调
+    func doUploadData(_ request:URLRequest,
+                  multDataBlock:@escaping ()->([(data: Data, name: String, fileName: String?, mimeType: String?)]),
+                  progress:@escaping (_ hasWritten:Int64, _ totalToWrite:Int64) -> Void,
+                  success: @escaping (_ response:Data)-> Void,
+                  failure:@escaping (_ err:Error)->Void)
 ```
 
 ## 使用说明
